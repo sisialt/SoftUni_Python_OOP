@@ -9,7 +9,7 @@ class Topping:
 
     @topping_type.setter
     def topping_type(self, value):
-        if not value:
+        if value == "":  # != not value
             raise ValueError("The topping type cannot be an empty string")
 
         self.__topping_type = value

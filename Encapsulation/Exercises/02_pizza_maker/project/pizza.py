@@ -1,3 +1,4 @@
+from typing import Dict
 from project.dough import Dough
 from project.topping import Topping
 
@@ -7,7 +8,7 @@ class Pizza:
         self.name = name
         self.dough = dough
         self.max_number_of_toppings = max_number_of_toppings
-        self.toppings = {}
+        self.toppings: Dict[str, float] = {}
 
     @property
     def name(self):
@@ -15,7 +16,7 @@ class Pizza:
 
     @name.setter
     def name(self, value):
-        if not value:
+        if value == "":
             raise ValueError("The name cannot be an empty string")
 
         self.__name = value

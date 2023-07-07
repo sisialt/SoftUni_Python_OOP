@@ -69,6 +69,8 @@ class Zoo:
     def animals_status(self) -> str:
         lions, tigers, cheetahs = [], [], []
 
+        # lions = [a for a in self.animals if isinstance(a, Lion)] # if a.__class__.__name__ == "Lion"
+
         for a in self.animals:
             if a.__class__.__name__ == "Lion":
                 lions.append(a)
