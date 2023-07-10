@@ -6,7 +6,7 @@ class PhotoAlbum:
         self.photos = [[] for _ in range(pages)]
 
     @classmethod
-    def from_photos_count(cls, photos_count: int):
+    def from_photos_count(cls, photos_count: int):  # pages = math.ceil(photos_count / 4)
         if photos_count % cls.MAX_PHOTOS_ON_PAGE == 0:
             pages = photos_count // cls.MAX_PHOTOS_ON_PAGE
         else:
