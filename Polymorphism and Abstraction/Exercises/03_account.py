@@ -4,6 +4,10 @@ class Account:
         self.amount = amount
         self._transactions = []
 
+    @property
+    def balance(self) -> int:
+        return self.amount
+
     def handle_transaction(self, transaction_amount: int) -> str:
         if self.amount + transaction_amount <= 0:
             raise ValueError("sorry cannot go in debt!")
@@ -17,11 +21,7 @@ class Account:
         if not isinstance(amount, int):
             raise ValueError("please use int for amount")
 
-        self.handle_transaction(amount)
-
-    @property
-    def balance(self):
-        return self.amount
+        return self.handle_transaction(amount)
 
     def __str__(self):
         return f"Account of {self.owner} with starting amount: {self.amount}"
@@ -36,7 +36,7 @@ class Account:
         return self._transactions[index]
 
     def __reversed__(self):
-        return self._transactions[::-1]
+        return self._transactions[::-1]  # reversed(self._transactions)
 
     def __gt__(self, other):
         return self.amount > other.amount
