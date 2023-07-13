@@ -53,3 +53,4 @@ class Tiger(Mammal):
             return f"{self.__class__.__name__} does not eat {food.__class__.__name__}!"
 
         self.increase_food_eaten_and_weight(increase_factor, food)
+

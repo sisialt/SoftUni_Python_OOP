@@ -2,10 +2,10 @@ from abc import ABC, abstractmethod
 
 
 class Animal(ABC):
-    def __init__(self, name: str, weight: float, food_eaten: int = 0):
+    def __init__(self, name: str, weight: float):
         self.name = name
         self.weight = weight
-        self.food_eaten = food_eaten
+        self.food_eaten = 0
 
     @staticmethod
     @abstractmethod
@@ -16,10 +16,14 @@ class Animal(ABC):
     def feed(self, food):
         pass
 
+    def increase_food_eaten_and_weight(self, factor, food):
+        self.weight += factor * food.quantity
+        self.food_eaten += food.quantity
+
 
 class Bird(Animal):
-    def __init__(self, name: str, weight: float, wing_size: float, food_eaten: int = 0):
-        super().__init__(name, weight, food_eaten)
+    def __init__(self, name: str, weight: float, wing_size: float):
+        super().__init__(name, weight)
         self.wing_size = wing_size
 
     @staticmethod
@@ -31,17 +35,13 @@ class Bird(Animal):
     def feed(self, food):
         pass
 
-    def increase_food_eaten_and_weight(self, factor, food):
-        self.weight += factor * food.quantity
-        self.food_eaten += food.quantity
-
     def __repr__(self):
         return f"{self.__class__.__name__} [{self.name}, {self.wing_size}, {self.weight}, {self.food_eaten}]"
 
 
 class Mammal(Animal):
-    def __init__(self, name: str, weight: float, living_region: str, food_eaten: int = 0):
-        super().__init__(name, weight, food_eaten)
+    def __init__(self, name: str, weight: float, living_region: str):
+        super().__init__(name, weight)
         self.living_region = living_region
 
     @staticmethod
@@ -53,9 +53,58 @@ class Mammal(Animal):
     def feed(self, food):
         pass
 
-    def increase_food_eaten_and_weight(self, factor, food):
-        self.weight += factor * food.quantity
-        self.food_eaten += food.quantity
-
     def __repr__(self):
         return f"{self.__class__.__name__} [{self.name}, {self.weight}, {self.living_region}, {self.food_eaten}]"
+
+# from abc import ABC, abstractmethod
+# from typing import List
+# from project.food import Food
+#
+#
+# class Animal(ABC):
+#
+#     def __init__(self, name: str, weight: float):
+#         self.name = name
+#         self.weight = weight
+#         self.food_eaten = 0
+#
+#     @property
+#     @abstractmethod
+#     def food_that_eats(self) -> List[Food]:
+#         ...
+#
+#     @property
+#     @abstractmethod
+#     def gained_weight(self) -> float:
+#         ...
+#
+#     @abstractmethod
+#     def make_sound(self) -> str:
+#         ...
+#
+#     def feed(self, food: Food) -> None or str:
+#         if type(food) not in self.food_that_eats:
+#             return f"{self.__class__.__name__} does not eat {food.__class__.__name__}!"
+#
+#         self.weight += food.quantity * self.gained_weight
+#         self.food_eaten += food.quantity
+#
+#
+# class Bird(Animal, ABC):
+#
+#     def __init__(self, name: str, weight: float, wing_size: float):
+#         super().__init__(name, weight)
+#         self.wing_size = wing_size
+#
+#     def __repr__(self):
+#         return f"{self.__class__.__name__} [{self.name}, {self.wing_size}, {self.weight}, {self.food_eaten}]"
+#
+#
+# class Mammal(Animal, ABC):
+#
+#     def __init__(self, name: str, weight: float, living_region: str):
+#         super().__init__(name, weight)
+#         self.living_region = living_region
+#
+#     def __repr__(self):
+#         return f"{self.__class__.__name__} [{self.name}, {self.weight}, {self.living_region}, {self.food_eaten}]"
