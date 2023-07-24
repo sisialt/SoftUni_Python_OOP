@@ -6,6 +6,9 @@ def read_next(*args):
         #     yield arg[index]
         #     index += 1
 
+        # for sub_el in arg:
+        #     yield sub_el
+
 
 for item in read_next("string", (2,), {"d": 1, "i": 2, "c": 3, "t": 4}):
     print(item, end='')
