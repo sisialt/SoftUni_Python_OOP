@@ -13,7 +13,7 @@ class VehicleTests(unittest.TestCase):
         self.assertEqual(50.0, self.my_vehicle.fuel)
         self.assertEqual(50.0, self.my_vehicle.capacity)
         self.assertEqual(100.0, self.my_vehicle.horse_power)
-        self.assertEqual(1.25, self.my_vehicle.fuel_consumption)
+        self.assertEqual(Vehicle.DEFAULT_FUEL_CONSUMPTION, self.my_vehicle.fuel_consumption)
 
     def test_drive_with_enough_fuel(self):
         self.my_vehicle.drive(10)
@@ -28,13 +28,18 @@ class VehicleTests(unittest.TestCase):
         self.assertEqual(50.0, self.my_vehicle.fuel)
 
     def test_refuel_with_valid_fuel(self):
-        self.my_vehicle.drive(20)
-        expected_added_fuel = 10
-        expected_fuel_in_vehicle = self.my_vehicle.fuel + expected_added_fuel
+        # self.my_vehicle.drive(20)
+        # expected_added_fuel = 10
+        # expected_fuel_in_vehicle = self.my_vehicle.fuel + expected_added_fuel
+        #
+        # self.my_vehicle.refuel(10)
+        #
+        # self.assertEqual(expected_fuel_in_vehicle, self.my_vehicle.fuel)
 
-        self.my_vehicle.refuel(10)
+        self.my_vehicle.fuel -= 1
+        self.my_vehicle.refuel(1)
 
-        self.assertEqual(expected_fuel_in_vehicle, self.my_vehicle.fuel)
+        self.assertEqual(50.0, self.my_vehicle.fuel)
 
     def test_refuel_with_invalid_fuel_raises(self):
         with self.assertRaises(Exception) as ex:
