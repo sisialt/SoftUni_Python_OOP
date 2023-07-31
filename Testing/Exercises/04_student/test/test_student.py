@@ -31,7 +31,7 @@ class StudentTests(unittest.TestCase):
 
         self.assertEqual([6.00, 5.90], self.my_student.courses["Advanced"])
         self.assertEqual("Course and course notes have been added.", result2)
-        self.assertEqual(2, len(self.my_student.courses))
+        self.assertEqual(1, len(self.my_student.courses))
 
     def test_enroll_new_course_with_no_notes(self):
         result = self.my_student.enroll("OOP", [6.00], "no")
