@@ -3,11 +3,35 @@ import unittest
 from project.name import Name
 
 
-class NameTests(unittest.TestCase):
+class Tests(unittest.TestCase):
     def setUp(self) -> None:
-        self.my_name = Name(0)
+        self.n = (0)
 
-    def test_initialize_name(self):
+    def test_initialize_(self):
+        pass
+
+    def test_(self):
+        pass
+
+    def test_(self):
+        pass
+
+    def test_(self):
+        pass
+
+    def test_(self):
+        pass
+
+    def test_(self):
+        pass
+
+    def test_(self):
+        pass
+
+    def test_(self):
+        pass
+
+    def test_(self):
         pass
 
 
