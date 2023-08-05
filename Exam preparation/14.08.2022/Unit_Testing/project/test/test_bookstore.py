@@ -104,14 +104,13 @@ class TestsBookstore(unittest.TestCase):
 
         self.assertEqual(expected, result)
 
-# this test was missing!
         self.bookstore.receive_book("book", 1)
         self.bookstore.sell_book("book", 1)
 
         result2 = self.bookstore.__str__()
         expected2 = ("Total sold books: 1\n"
                      "Current availability: 0\n"
-                     " - book: 0 copies")
+                     " - book: 0 copies")  # this test was missing!
 
         self.assertEqual(expected2, result2)
 
